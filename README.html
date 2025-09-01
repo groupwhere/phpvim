@@ -1,0 +1,49 @@
+<h1 id="php-indent-file-for-vim-php.vim">PHP Indent file for Vim (php.vim)</h1>
+<h2 id="overview">Overview</h2>
+<p>This was the original vim php indent file written in 2002 and included in Vim 6.X releases. It still works with the latest 9.X release.</p>
+<p>Indents after &lt;?php tag, &lt;? tag (optional), ( )or { }. The script can also format switch/case statements and more recently will automatically format /* comment sections */</p>
+<p>NOTE: 1.4 adds experimental formatting (or rather, not formatting) of heredoc.</p>
+<p>See the CHANGELOG or the script itself for more information</p>
+<p>Comment sections are automatically formatted, adding the * on a new line until closure by */ :</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode php"><code class="sourceCode php"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co">/* Comment line 1</span></a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="co"> * Line 2</span></a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="co"> */</span></a></code></pre></div>
+<p>Comments done using # also receive a new line with the # prepended. But, you will have to end it manually since there is no difference between lines and the end of such sections.</p>
+<p>Comments done using // also receive a new line with the // prepended. But, you will have to end it manually since there is no difference between lines and the end of such sections.</p>
+<p>It was not designed to and will not handle if blocks etc. without brackets and also does not format html. Please use braces and separate display logic for more readable code.</p>
+<h2 id="installation">Installation</h2>
+<p>Place in your /usr/share/vim/vim8X/indent directory (e.g. /usr/share/vim/vim81/indent), replacing the version which is installed by default.</p>
+<p>NOTE: This script is no longer included in Vim as of 7.0, yet was replaced by another script. After many years I still use this one with Vim 7.X and 8.X because it handles tab indentation correctly without adding spaces, etc. The current official script seems to favor the use of spaces and if you want to always start with a tab you will have to enter that yourself on a new line after a closing bracket. You’re welcome to submit ideas for improvement.</p>
+<h2 id="options">Options</h2>
+<p>These can optionally be added to your vimrc:</p>
+<pre><code>- php_noindent_switch -- do not try to indent switch/case statements or comments (version 0.1 behavior)
+- php_indent_shortopentags -- indent after short php open tags, too
+- php_no_autocomment  -- do not automatically format comment sections
+- php_indent_space -- Use spaces instead of tabs [ This may work already if you have expandtab set in your config. ]</code></pre>
+<h2 id="sample">Sample</h2>
+<p>Example of automatically indented code using this indent script. All leading whitespace is tab below:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode php"><code class="sourceCode php"><a class="sourceLine" id="cb3-1" data-line-number="1">    <span class="kw">$var</span> = <span class="kw">array</span><span class="ot">(</span></a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">        <span class="st">&#39;one&#39;</span> =&gt; <span class="dv">1</span><span class="ot">,</span></a>
+<a class="sourceLine" id="cb3-3" data-line-number="3">        <span class="st">&#39;two&#39;</span> =&gt; <span class="dv">2</span></a>
+<a class="sourceLine" id="cb3-4" data-line-number="4">    <span class="ot">);</span></a>
+<a class="sourceLine" id="cb3-5" data-line-number="5">    <span class="co">/* Comment section</span></a>
+<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">     * line two</span></a>
+<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="co">     */</span></a>
+<a class="sourceLine" id="cb3-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb3-9" data-line-number="9">    <span class="co">// more code here</span></a>
+<a class="sourceLine" id="cb3-10" data-line-number="10">    <span class="kw">function</span> test<span class="ot">(</span><span class="kw">$var</span><span class="ot">)</span></a>
+<a class="sourceLine" id="cb3-11" data-line-number="11">    {</a>
+<a class="sourceLine" id="cb3-12" data-line-number="12">        <span class="fu">print_r</span><span class="ot">(</span><span class="kw">$var</span><span class="ot">);</span></a>
+<a class="sourceLine" id="cb3-13" data-line-number="13">    }</a>
+<a class="sourceLine" id="cb3-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb3-15" data-line-number="15">    <span class="kw">switch</span><span class="ot">(</span><span class="kw">$argv</span><span class="ot">[</span><span class="dv">1</span><span class="ot">])</span></a>
+<a class="sourceLine" id="cb3-16" data-line-number="16">    {</a>
+<a class="sourceLine" id="cb3-17" data-line-number="17">        <span class="kw">case </span><span class="st">&#39;a&#39;</span><span class="ot">:</span></a>
+<a class="sourceLine" id="cb3-18" data-line-number="18">            <span class="kw">echo</span> <span class="st">&quot;A!</span><span class="kw">\n</span><span class="st">&quot;</span><span class="ot">;</span></a>
+<a class="sourceLine" id="cb3-19" data-line-number="19">            <span class="kw">break</span><span class="ot">;</span></a>
+<a class="sourceLine" id="cb3-20" data-line-number="20">        <span class="kw">case </span><span class="st">&#39;b&#39;</span><span class="ot">:</span></a>
+<a class="sourceLine" id="cb3-21" data-line-number="21">            <span class="kw">echo</span> <span class="st">&quot;B!</span><span class="kw">\n</span><span class="st">&quot;</span><span class="ot">;</span></a>
+<a class="sourceLine" id="cb3-22" data-line-number="22">            <span class="kw">break</span><span class="ot">;</span></a>
+<a class="sourceLine" id="cb3-23" data-line-number="23">        <span class="kw">default:</span></a>
+<a class="sourceLine" id="cb3-24" data-line-number="24">            <span class="kw">echo</span> <span class="st">&quot;No!</span><span class="kw">\n</span><span class="st">&quot;</span><span class="ot">;</span></a>
+<a class="sourceLine" id="cb3-25" data-line-number="25">    }</a></code></pre></div>

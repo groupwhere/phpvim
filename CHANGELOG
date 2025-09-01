@@ -1,0 +1,16 @@
+Changes: 1.4 - Add formatting of heredoc instances in code
+             - Fix indentation of lines following a // or # comment line
+         1.3 - Add option to force indent using spaces instead of tabs
+         1.2 - Found syntax error in renaming of variable after 0.7 which
+           broke the formatting of switch/case
+         1.1 - Sameday change/fix to skip lines commented by # also
+         1.0 - Sameday change/fix to skip lines commented by // (Don't format other code
+           if in // comment section
+         0.9 - Sameday bugfix for certain commenting styles, e.g. closing with /**/
+         0.8 - Borrowed methods from current dist of php.vim for automatic formatting of
+           comments (http://www.2072productions.com/?to=phpindent.txt)
+         0.7 - fix for /* comment */ indentation from Devin Weaver <devin@tritarget.com>
+         0.6 - fix indentation for closing bracket (patch from ITLab at MUSC - http://www.itlab.musc.edu/)
+         0.5 - fix duplicate indent on open tag, and empty bracketed statements.
+         0.4 - Fixes for closing php tag, switch statement closure, and php_indent_shortopentags
+           option from Steffen Bruentjen <vim@kontraphon.de>
